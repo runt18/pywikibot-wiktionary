@@ -93,9 +93,9 @@ class Term(object):
 
         """
         if self.gender:
-            return ' %s' % (
+            return ' {0!s}'.format((
                 structs.wiktionaryformats[wikilang]['gender'].replace(
-                    '%%gender%%', self.gender))
+                    '%%gender%%', self.gender)))
         else:
             return ''
 
@@ -113,14 +113,14 @@ class Term(object):
         in a format ready for Wiktionary
 
         """
-        return '[[%s]]' % self.term
+        return '[[{0!s}]]'.format(self.term)
 
     def wikiWrapAsTranslation(self, wikilang):
         """  Returns a string with this term as a link followed by the gender
         in a format ready for Wiktionary
 
         """
-        return '[[%s]]' % self.term
+        return '[[{0!s}]]'.format(self.term)
 
     def showContents(self, indentation):
         """ Prints the contents of this Term.
@@ -128,10 +128,10 @@ class Term(object):
         The primary purpose is to help keep one's sanity while debugging.
 
         """
-        print ' ' * indentation + 'lang = %s' % self.lang
-        print ' ' * indentation + 'pos = %s' % self.pos
-        print ' ' * indentation + 'term = %s' % self.term
-        print ' ' * indentation + 'relatedwords = %s' % self.relatedwords
+        print ' ' * indentation + 'lang = {0!s}'.format(self.lang)
+        print ' ' * indentation + 'pos = {0!s}'.format(self.pos)
+        print ' ' * indentation + 'term = {0!s}'.format(self.term)
+        print ' ' * indentation + 'relatedwords = {0!s}'.format(self.relatedwords)
 
 
 class Noun(Term):
@@ -154,7 +154,7 @@ class Noun(Term):
 
     def showContents(self, indentation):
         Term.showContents(self, indentation)
-        print ' ' * indentation + 'gender = %s' % self.gender
+        print ' ' * indentation + 'gender = {0!s}'.format(self.gender)
 
     def wikiWrapAsExample(self, wikilang):
         """ Returns a string with the gender in a format ready for Wiktionary,
@@ -229,7 +229,7 @@ class Verb(Term):
         """
         if wikilang == 'en':
             if self.term.lower().startswith('to '):
-                return 'to [[%s]]' % self.term[3:]
+                return 'to [[{0!s}]]'.format(self.term[3:])
         return Term.wikiWrapForList(self, wikilang)
 
     def wikiWrapAsTranslation(self, wikilang):
