@@ -10,9 +10,8 @@ class Meaning:
     """ This class contains one meaning for a word or an expression.
     """
     def __init__(self, term, definition='', etymology='',
-                 synonyms={'remark': '',
-                           'synonyms': [{'remark': '', 'synonym': ''}]},
-                 translations=None, label='', concisedef='', examples=[]):
+                 synonyms=None,
+                 translations=None, label='', concisedef='', examples=None):
         """ Constructor
         Generally called with one parameter:
         - The Term object we are describing
@@ -24,6 +23,11 @@ class Meaning:
           optional
 
         """
+        if synonyms is None:
+            synonyms = {'remark': '',
+                           'synonyms': [{'remark': '', 'synonym': ''}]}
+        if examples is None:
+            examples = []
         self.term = term
         self.definition = definition
         self.concisedef = concisedef
