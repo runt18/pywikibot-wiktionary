@@ -73,5 +73,5 @@ class Header(object):
             self.contents = otherheaders[self.header]
 
     def __repr__(self):
-        return "%s.Header(contents='%s', header='%s', level=%d, type='%s')" % (
+        return "{0!s}.Header(contents='{1!s}', header='{2!s}', level={3:d}, type='{4!s}')".format(
             self.__module__, self.contents, self.header, self.level, self.type)

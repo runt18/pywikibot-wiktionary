@@ -69,7 +69,7 @@ class Entry:
             if wikilang == 'en':
                 entry += meanings[0].term.wikiWrapAsExample(wikilang) + '\n\n'
                 for meaning in meanings:
-                    entry += '#%s %s\n' % (meaning.getLabel(),
+                    entry += '#{0!s} {1!s}\n'.format(meaning.getLabel(),
                                            meaning.definition)
                     entry += meaning.wikiWrapExamples()
                 entry += '\n'
@@ -78,25 +78,25 @@ class Entry:
                 for meaning in meanings:
                     term = meaning.term
                     entry += meaning.getLabel() + term.wikiWrapAsExample(
-                        wikilang) + '; %s\n' % meaning.definition
+                        wikilang) + '; {0!s}\n'.format(meaning.definition)
                     entry += meaning.wikiWrapExamples()
                 entry += '\n'
 
             if meaning.hasSynonyms():
-                entry += '%s\n' % (
-                    structs.wiktionaryformats[wikilang]['synonymsheader'])
+                entry += '{0!s}\n'.format((
+                    structs.wiktionaryformats[wikilang]['synonymsheader']))
                 for meaning in meanings:
-                    entry += "*%s'''%s''': %s" % (meaning.getLabel(),
+                    entry += "*{0!s}'''{1!s}''': {2!s}".format(meaning.getLabel(),
                                                   meaning.getConciseDef(),
                                                   meaning.wikiWrapSynonyms(
                                                       wikilang))
                 entry += '\n'
 
             if meaning.hasTranslations():
-                entry += '%s\n' % (
-                    structs.wiktionaryformats[wikilang]['translationsheader'])
+                entry += '{0!s}\n'.format((
+                    structs.wiktionaryformats[wikilang]['translationsheader']))
                 for meaning in meanings:
-                    entry += "%s'''%s'''\n%s\n\n" % (
+                    entry += "{0!s}'''{1!s}'''\n{2!s}\n\n".format(
                         meaning.getLabel(), meaning.getConciseDef(),
                         meaning.wikiWrapTranslations(wikilang, self.entrylang))
                 entry += '\n'
@@ -108,7 +108,7 @@ class Entry:
         The primary purpose is to help keep your sanity while debugging.
 
         """
-        print ' ' * indentation + 'entrylang = %s' % self.entrylang
+        print ' ' * indentation + 'entrylang = {0!s}'.format(self.entrylang)
         print ' ' * indentation + 'posorder:' + repr(self.posorder)
 
         meaningkeys = self.meanings.keys()

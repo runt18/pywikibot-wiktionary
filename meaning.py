@@ -316,7 +316,7 @@ class Meaning:
 
     def getLabel(self):
         if self.label:
-            return u'<!--%s-->' % self.label
+            return u'<!--{0!s}-->'.format(self.label)
 
     def setConciseDef(self, concisedef):
         self.concisedef = concisedef
@@ -394,8 +394,8 @@ class Meaning:
             # current Wiktionary
             alllanguages = self.translations.keys()
             alllanguages.sort(sortonname(langnames[wikilang]))
-            wrappedtranslations = '%s\n' % (
-                structs.wiktionaryformats[wikilang]['transbefore'])
+            wrappedtranslations = '{0!s}\n'.format((
+                structs.wiktionaryformats[wikilang]['transbefore']))
             alreadydone = 0
             for language in alllanguages:
                 if language == wikilang:
@@ -458,8 +458,8 @@ class Meaning:
         """
         print ' ' * indentation + 'term: '
         self.term.showContents(indentation + 2)
-        print ' ' * indentation + 'definition = %s' % self.definition
-        print ' ' * indentation + 'etymology = %s' % self.etymology
+        print ' ' * indentation + 'definition = {0!s}'.format(self.definition)
+        print ' ' * indentation + 'etymology = {0!s}'.format(self.etymology)
         print ' ' * indentation + 'Synonyms:'
         for synonym in self.synonyms:
             synonym.showContents(indentation + 2)
@@ -476,5 +476,5 @@ class Meaning:
         """
         wrappedexamples = ''
         for example in self.examples:
-            wrappedexamples += "#:'''%s'''\n" % example
+            wrappedexamples += "#:'''{0!s}'''\n".format(example)
         return wrappedexamples

@@ -412,7 +412,7 @@ class WiktionaryPage:
                                         "'", '').replace(":", '').replace(
                                             ".", '').replace("#", '').lower()
                                 if len(word) > 1 and \
-                                   ' %s ' % word in definition:
+                                   ' {0!s} '.format(word) in definition:
                                     score += 1
                                 if len(word) > 2 and word in definition:
                                     score += 1
@@ -474,9 +474,9 @@ class WiktionaryPage:
 
         """
         indentation = 0
-        print ' ' * indentation + 'wikilang = %s' % self.wikilang
+        print ' ' * indentation + 'wikilang = {0!s}'.format(self.wikilang)
 
-        print ' ' * indentation + 'term = %s' % self.term
+        print ' ' * indentation + 'term = {0!s}'.format(self.term)
 
         entrieskeys = self.entries.keys()
         for entrieskey in entrieskeys:
